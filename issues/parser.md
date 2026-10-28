@@ -12,8 +12,6 @@ The shared date parser reads MM/DD/YYYY for tenants whose locale writes DD/MM/YY
 - For a day-first tenant, enter a date such as 07/04/2026 through a path that uses the shared parser (e.g. an app booking). The tenant means 7 April, but month-first parsing treats it as 4 July. Report R-41200 describes this reversal.
 - Compare with the separate booking-v3 form-hint issue: that path tells people to enter a month-first date, then interprets it day-first. The fixes must be tested separately.
 
-## Expected
-
 ## Resolution — fixed
 
 The course's engineering update says #4471 closed on 2026-10-05:

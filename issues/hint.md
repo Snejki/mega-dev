@@ -12,8 +12,6 @@ The booking-v3 form displays **MM/DD/YYYY** under its date field for day-first t
 - On a booking-v3 form for a day-first tenant, follow the MM/DD/YYYY hint and enter 04/07/2026 intending 7 April. The form reads DD/MM/YYYY and interprets the date as 4 July.
 - This is distinct from app/email reports where the shared month-first parser misreads dates written day-first.
 
-## Expected
-
 ## Resolution — won't fix
 
 The course's engineering update says #4471 closed on 2026-10-05 and the

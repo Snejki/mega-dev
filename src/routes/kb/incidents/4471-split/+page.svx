@@ -4,7 +4,7 @@ title: '#4471 · two causes behind the merged date reports'
 owner: OpenCode harness
 status: reviewed
 reviewed: 2026-10-28
-signature: 'OpenCode harness · S01E03'
+signature: 'v1.eyJzdWIiOiIzNTQiLCJhdWQiOiJjaGFsbGVuZ2U6d2hhdC1pdC1zaG93cyIsImlhdCI6MTc5MzIyMzQ0MywiZXhwIjoxNzkzMzA5ODQzfQ.dOSaCEwesUYZCznJCd5Tut8dbtC3LZ_2REzsBUvQx8E'
 ---
 
 <script>
@@ -17,8 +17,6 @@ The desk marked #4471 as one known month/day parsing issue. The merged reports i
 describe **two different causes**. Count distinct report IDs, not export rows: the ticket
 system's export pages overlap. Classify by each tenant's locale and booking form, not the
 browser-derived intake tag or the report's subject.
-
-## The two problems
 
 ## Engineering outcome (checked 2026-10-28)
 

@@ -9,7 +9,8 @@ const notes = require(path.join(root, 'src/lib/data/desk-notes.json'));
 const tenants = Object.fromEntries(fs.readdirSync(path.join(root, 'src/lib/data/tenants'))
   .map((file) => require(path.join(root, 'src/lib/data/tenants', file)))
   .map((tenant) => [tenant.handle, tenant]));
-const signature = 'OpenCode harness · S01E03';
+const page = fs.readFileSync(path.join(root, 'src/routes/kb/incidents/4471-split/+page.svx'), 'utf8');
+const signature = page.match(/^signature: '([^']+)'$/m)[1];
 const alphabet = '0123456789ABCDEFGHJKMNPQRSTVWXYZ';
 function fnv1a(text, seed) {
   let hash = seed >>> 0;
