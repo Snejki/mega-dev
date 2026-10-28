@@ -20,6 +20,18 @@ browser-derived intake tag or the report's subject.
 
 ## The two problems
 
+## Engineering outcome (checked 2026-10-28)
+
+The live course page now reports #4471 closed on 2026-10-05. The
+[parser ticket](https://github.com/Snejki/mega-dev/issues/1) is **fixed**:
+`fix(dates): parse dd/mm for eu locales`, closed as completed. The
+[hint ticket](https://github.com/Snejki/mega-dev/issues/2) is **won't fix**:
+booking-v3 was retired, closed as not planned. Retirement is not a hint fix.
+These are reported engineering outcomes, not independent production verification.
+The exported October 4 data below describes the historical reports.
+
+## Original problems and separate fixes
+
 1. **Month-first shared parser for day-first tenants (`parser`).** The shared parser reads
    dates as MM/DD even when the tenant writes DD/MM. This is the main cause behind #4471.
    Repair the parser's handling of the tenant's date order.

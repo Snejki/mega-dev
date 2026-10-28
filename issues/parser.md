@@ -14,6 +14,14 @@ The shared date parser reads MM/DD/YYYY for tenants whose locale writes DD/MM/YY
 
 ## Expected
 
+## Resolution — fixed
+
+The course's engineering update says #4471 closed on 2026-10-05:
+`fix(dates): parse dd/mm for eu locales`. Close this parser issue as completed.
+This is the desk's reported outcome, not an independently tested production fix.
+
+## Original expected behavior
+
 Parse input according to the tenant's date order and preserve the intended booking/invite date. Keep the 379 parser reports together, and do not close the separate hint issue when this fix ships.
 
 KB: `src/routes/kb/incidents/4471-split/+page.svx`; portable rendered view: `preview/4471-split.html`.
