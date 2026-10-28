@@ -1,0 +1,53 @@
+---
+layout: runbook
+title: '#4471 · two causes behind the merged date reports'
+owner: OpenCode harness
+status: reviewed
+reviewed: 2026-10-28
+signature: 'OpenCode harness · S01E03'
+---
+
+<script>
+  import CauseTable from '#lib/kb/CauseTable.svelte';
+  import QueueTimeline from '#lib/kb/QueueTimeline.svelte';
+  import RenderStamp from '#lib/kb/RenderStamp.svelte';
+</script>
+
+The desk marked #4471 as one known month/day parsing issue. The merged reports instead
+describe **two different causes**. Count distinct report IDs, not export rows: the ticket
+system's export pages overlap. Classify by each tenant's locale and booking form, not the
+browser-derived intake tag or the report's subject.
+
+## The two problems
+
+1. **Month-first shared parser for day-first tenants (`parser`).** The shared parser reads
+   dates as MM/DD even when the tenant writes DD/MM. This is the main cause behind #4471.
+   Repair the parser's handling of the tenant's date order.
+2. **Misleading date hint in booking-v3 (`hint`).** For day-first tenants, booking-v3 prints
+   MM/DD/YYYY under the date field. People enter the date month-first as instructed, but
+   the form interprets it in the tenant's day-first order. Correct the displayed hint to
+   match the date order that the form actually reads. This needs its own ticket and fix.
+
+The table below computes the number of reports for each cause from the exported data.
+Its *tagged as* column shows intake guesses, not the actual cause. Reports described by the
+desk as a one-day move remain filed under their tenant-derived cause and are footnoted
+there; they do not form a third cause on this evidence.
+
+<CauseTable ticket={4471} />
+
+## Queue history
+
+The reports arrived from April onward, but their merge dates differ. The chart keeps
+received and merged separate rather than treating the merge date as when the bug began.
+
+<QueueTimeline ticket={4471} />
+
+## Triage correction
+
+The existing [subject-line dedupe rule](/kb/triage/dedupe) cannot establish that two
+reports have the same cause. Keep the parser reports together under #4471, separate the
+booking-v3 hint reports, and reconcile each ticket's count from distinct report IDs.
+Do not close the second issue when the parser fix ships: test the form hint and parsing
+independently for a day-first tenant.
+
+<RenderStamp {signature} />
